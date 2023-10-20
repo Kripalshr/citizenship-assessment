@@ -6,4 +6,6 @@ module com.example.citizenshipassessment {
 
     opens com.example.citizenshipassessment to javafx.fxml;
     exports com.example.citizenshipassessment;
+    exports com.example.citizenshipassessment.controller;
+    opens com.example.citizenshipassessment.controller to javafx.fxml;
 }

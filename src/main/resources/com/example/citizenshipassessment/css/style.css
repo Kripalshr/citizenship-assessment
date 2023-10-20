@@ -1,0 +1,31 @@
+/* Apply some basic styles to the GridPane */
+.grid-pane {
+    -fx-background-color: #f5f5f5; /* Set a light gray background color */
+    -fx-padding: 20; /* Add some padding */
+    -fx-spacing: 10; /* Add some spacing between children */
+}
+
+/* Style the Label for "LOGIN" */
+.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333; /* Text color */
+}
+
+/* Style the TextFields */
+.text-field, .password-field {
+    -fx-pref-width: 250px; /* Set the preferred width */
+}
+
+/* Style the Button */
+.button {
+    -fx-background-color: #0076d3; /* Set a blue background color */
+    -fx-text-fill: white; /* Text color */
+    -fx-pref-width: 130px; /* Set the preferred width */
+}
+
+/* Style the Hyperlink */
+.hyperlink {
+    -fx-font-size: 16px;
+    -fx-text-fill: #0076d3; /* Set a blue color for the hyperlink text */
+}

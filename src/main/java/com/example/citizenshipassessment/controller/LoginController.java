@@ -1,4 +1,4 @@
-package com.example.citizenshipassessment;
+package com.example.citizenshipassessment.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
