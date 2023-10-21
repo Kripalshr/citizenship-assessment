@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="background"
-      stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.citizenshipassessment.controller.LoginController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" styleClass="background" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenshipassessment.controller.LoginController">
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
          <children>
@@ -42,7 +31,7 @@
                       <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="38.19697570800781" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="username" prefHeight="31.0" prefWidth="268.0" promptText="Username" GridPane.columnIndex="1" />
+                        <TextField fx:id="usernameField" prefHeight="31.0" prefWidth="268.0" promptText="Username" GridPane.columnIndex="1" />
                         <Label alignment="CENTER" prefHeight="29.0" prefWidth="178.0" text="Username">
                            <font>
                               <Font size="24.0" />
@@ -53,10 +42,10 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="password" prefHeight="33.0" prefWidth="268.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="passwordField" prefHeight="33.0" prefWidth="268.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Button fx:id="login_button" layoutX="648.0" layoutY="350.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-button" text="Login" textFill="WHITE">
+                  <Button fx:id="login_button" layoutX="648.0" layoutY="350.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="40.0" prefWidth="220.0" styleClass="login-button" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
