@@ -45,12 +45,23 @@ public class LoginController {
         User user = dbConnector.getUserByUsername(username);
 
         if (user != null && (Objects.equals(password, user.getPassword()))) {
-            loginVerify.setText("Successfully Logged in");
+            loadMainPage(event);
         } else {
             loginVerify.setText("Login Failed");
         }
     }
 
+    private void loadMainPage(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-page.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void switchToRegisterPage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("register-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -59,9 +70,4 @@ public class LoginController {
         stage.show();
     }
 
-
-    @FXML
-   protected void onLoginButtonClick(){
-       loginVerify.setText("Successefully Loggedin");
-   }
 }
