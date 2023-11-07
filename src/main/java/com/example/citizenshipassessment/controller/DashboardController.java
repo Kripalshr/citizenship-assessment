@@ -1,13 +1,34 @@
 package com.example.citizenshipassessment.controller;
 
+import com.example.citizenshipassessment.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class DashboardController {
 
     @FXML
     private Label welcomeLabel;
+    private Stage stage;
+    private Scene scene;
+
+    public void handleStartAssessmentButton(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("quiz.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void handleProfileButton(ActionEvent event) {

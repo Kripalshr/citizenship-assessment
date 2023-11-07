@@ -64,7 +64,7 @@
                   <Font name="Arial Black" size="19.0" />
                </font>
             </Label>
-            <Button layoutX="471.0" layoutY="447.0" mnemonicParsing="false" text="Start Assessment" />
+            <Button layoutX="471.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleStartAssessmentButton" text="Start Assessment" />
             </children>
         </AnchorPane>
     </children>

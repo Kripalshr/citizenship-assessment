@@ -86,8 +86,12 @@ public class MainPageController {
         loggedInUsername = username;
     }
 
+    public String getLoggedInUsername() {
+        return loggedInUsername;
+    }
+
     public void initialize() {
-        username.setText(loggedInUsername);
+        username.setText(getLoggedInUsername());
     }
 
     public void handleFormSubmit(ActionEvent event) {
