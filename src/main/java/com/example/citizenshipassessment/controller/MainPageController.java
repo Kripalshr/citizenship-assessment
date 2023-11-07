@@ -1,30 +1,27 @@
 package com.example.citizenshipassessment.controller;
 
 import com.example.citizenshipassessment.AppConfig;
+import com.example.citizenshipassessment.MainApp;
 import com.example.citizenshipassessment.database.DatabaseConnector;
 import com.example.citizenshipassessment.model.CitizenshipData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.control.ToggleGroup;
-import org.w3c.dom.Text;
-
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import java.io.IOException;
 import java.sql.Date;
 
 public class MainPageController {
-    @FXML
-    private HBox mainContainer;
 
     @FXML
     private Label username;
-
-    @FXML
-    private AnchorPane innerContainer;
-
-    @FXML
-    private Label welcomeLabel;
 
     @FXML
     private TextField firstNameTextField;
@@ -58,7 +55,7 @@ public class MainPageController {
 
     @FXML
     private TextField fathersLastName;
-    
+
     @FXML
     private RadioButton maleRadioButton;
 
@@ -80,25 +77,21 @@ public class MainPageController {
     @FXML
     private ToggleGroup gender;
 
-    private String loggedInUsername; // Added field for storing the logged-in username
+    private String loggedInUsername;
+    private Stage stage;
+    private Scene scene;
 
-    // Define a ToggleGroup for the radio buttons
-
+    @FXML
     public void setLoggedInUsername(String username) {
         loggedInUsername = username;
-        System.out.println(username);
     }
 
     public void initialize() {
         username.setText(loggedInUsername);
-        // Initialization code can go here (e.g., setting initial UI state).
-        System.out.println(loggedInUsername);
     }
-    // In your MainPageController
-    public void handleFormSubmit(ActionEvent event) {
 
+    public void handleFormSubmit(ActionEvent event) {
         RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
-        // Collect data from the form fields and create a CitizenshipData instance
         CitizenshipData citizenshipData = new CitizenshipData();
         citizenshipData.setFirstName(firstNameTextField.getText());
         citizenshipData.setMiddleName(middleNameTextField.getText());
@@ -114,16 +107,26 @@ public class MainPageController {
         citizenshipData.setGender(selectedGender.getText());
         citizenshipData.setCitizenshipNumber(citizenshipTextField.getText());
         citizenshipData.setIssuingCountry(issuingCountryTextField.getText());
-        // Insert the data into the database
         DatabaseConnector dbConnector = new DatabaseConnector(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD);
         dbConnector.insertCitizenshipData(citizenshipData);
         dbConnector.close();
+        loadDashboardPage(event);
+    }
+
+    public void loadDashboardPage(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("dashboard-page.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void handleLogoutButton(ActionEvent event) {
-
+        // Handle logout
     }
-
-    // You can define additional event handlers and methods as needed for your main page.
 }

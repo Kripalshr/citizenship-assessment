@@ -4,6 +4,7 @@ module com.example.citizenshipassessment {
 
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires com.opencsv;
 
     opens com.example.citizenshipassessment to javafx.fxml;
     exports com.example.citizenshipassessment;

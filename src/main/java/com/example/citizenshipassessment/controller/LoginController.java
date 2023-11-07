@@ -68,6 +68,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+
     public void switchToRegisterPage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("register-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
