@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -11,41 +12,35 @@
             <children>
                 <AnchorPane layoutX="187.0" layoutY="115.0" prefHeight="574.0" prefWidth="1002.0" styleClass="login-register">
                     <children>
-                        <ImageView fitHeight="366.0" fitWidth="431.0" layoutX="55.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/login.png" />
-                            </image>
-                        </ImageView>
-                        <Label layoutX="680.0" layoutY="59.0" styleClass="title-text" text="Sign Up">
-                            <font>
-                                <Font size="32.0" />
-                            </font>
-                        </Label>
-                        <GridPane layoutX="523.0" layoutY="150.0" prefHeight="188.0" prefWidth="442.0">
+                        <GridPane layoutX="516.0" layoutY="150.0" prefHeight="267.0" prefWidth="449.0" AnchorPane.topAnchor="97.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.69622802734375" minWidth="10.0" prefWidth="127.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.5" minWidth="10.0" prefWidth="314.5" />
                             </columnConstraints>
                             <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="37.76458740234375" minHeight="10.0" prefHeight="37.76458740234375" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="40.917510986328125" minHeight="10.0" prefHeight="35.23541259765625" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="40.917510986328125" minHeight="10.0" prefHeight="35.23541259765625" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.582489013671875" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <TextField fx:id="usernameField" prefHeight="31.0" prefWidth="268.0" promptText="username" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label alignment="CENTER" prefHeight="29.0" prefWidth="178.0" text="Username" GridPane.rowIndex="2">
+                                <TextField fx:id="usernameField" prefHeight="23.0" prefWidth="315.0" promptText="username" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Label alignment="CENTER" prefHeight="29.0" prefWidth="178.0" text="Username" GridPane.rowIndex="3">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <Label alignment="CENTER" prefHeight="29.0" prefWidth="177.0" text="Password" GridPane.rowIndex="4">
+                                <Label alignment="CENTER" prefHeight="29.0" prefWidth="177.0" text="Password" GridPane.rowIndex="5">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <PasswordField fx:id="passwordField" prefHeight="33.0" prefWidth="311.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <PasswordField fx:id="passwordField" prefHeight="24.0" prefWidth="315.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label alignment="CENTER" prefHeight="34.0" prefWidth="204.0" text="First Name">
                            <font>
                               <Font size="18.0" />
@@ -56,16 +51,67 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="first_name" prefHeight="31.0" prefWidth="268.0" promptText="First Name" GridPane.columnIndex="1" />
-                        <TextField fx:id="last_name" prefHeight="31.0" prefWidth="268.0" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" prefHeight="29.0" prefWidth="178.0" text="email" GridPane.rowIndex="3">
+                        <TextField fx:id="first_name" prefHeight="21.0" prefWidth="315.0" promptText="First Name" GridPane.columnIndex="1" />
+                        <TextField fx:id="last_name" prefHeight="22.0" prefWidth="315.0" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" prefHeight="29.0" prefWidth="178.0" text="email" GridPane.rowIndex="4">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="emailField" prefHeight="31.0" prefWidth="268.0" promptText="email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="emailField" prefHeight="24.0" prefWidth="315.0" promptText="email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="164.0" text="DOB" textAlignment="CENTER" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dobDatePicker" prefHeight="26.0" prefWidth="322.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="167.0" text="Gender" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="maleRadioButton" mnemonicParsing="false" text="M" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="GenderGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="femaleRadioButton" contentDisplay="CENTER" mnemonicParsing="false" text="F" toggleGroup="$GenderGroup" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="48.0" />
+                           </GridPane.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="otherRadioButton" mnemonicParsing="false" text="Others" toggleGroup="$GenderGroup" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="91.0" />
+                           </GridPane.margin>
+                        </RadioButton>
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="142.0" text="Citizenship NO" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="citizenshipTextField" promptText="Citizenship Number" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="143.0" text="Nationality" GridPane.rowIndex="8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="nationalityPicker" prefHeight="26.0" prefWidth="331.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                             </children>
                         </GridPane>
+                        <ImageView fitHeight="366.0" fitWidth="431.0" layoutX="55.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/login.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="680.0" layoutY="34.0" styleClass="title-text" text="Sign Up">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Label>
                         <Button fx:id="signup_button" layoutX="639.0" layoutY="376.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="40.0" prefWidth="220.0" styleClass="login-button" text="Sign Up" textFill="WHITE">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="18.0" />

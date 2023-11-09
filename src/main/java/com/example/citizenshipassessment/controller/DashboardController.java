@@ -18,6 +18,15 @@ public class DashboardController {
     private Stage stage;
     private Scene scene;
 
+    private String loggedInUsername;
+
+    public void setLoggedInUsername(String username) {
+        loggedInUsername = username;
+    }
+
+    public String getLoggedInUsername() {
+        return loggedInUsername;
+    }
     public void handleStartAssessmentButton(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("quiz.fxml"));

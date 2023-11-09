@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.citizenshipassessment.controller.ResultController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenshipassessment.controller.ResultController">
+    <children>
+        <AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white; -fx-background-radius: 32px; -fx-border-radius: 32px;">
+            <children>
+                <Label layoutX="623.0" layoutY="94.0" text="Result">
+                    <font>
+                        <Font name="Open Sans Extrabold" size="27.0" />
+                    </font>
+                </Label>
+                <Label fx:id="remark" layoutX="412.0" layoutY="153.0" prefHeight="70.0" prefWidth="623.0" text="Very good work!! This is your hard work and dedication which helped you to reach the zenith of success." wrapText="true">
+                    <font>
+                        <Font name="Open Sans Semibold" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="marks" layoutX="412.0" layoutY="255.0" prefHeight="130.0" prefWidth="138.0" style="-fx-background-color: grey; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="9/10" textFill="#320f48">
+                    <font>
+                        <Font name="Open Sans Extrabold" size="30.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="markstext" layoutX="423.0" layoutY="407.0" text="9 Marks Scored" textFill="#1f3eff">
+                    <font>
+                        <Font name="Open Sans Semibold" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="correcttext" layoutX="486.0" layoutY="539.0" text="Correct Answers: 9" textFill="#0692aa">
+                    <font>
+                        <Font name="Open Sans Semibold" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="wrongtext" layoutX="1002.0" layoutY="536.0" text="Incorrect Answers: 1" textFill="#ff0000">
+                    <font>
+                        <Font name="Open Sans Semibold" size="15.0" />
+                    </font>
+                </Label>
+                <ProgressIndicator fx:id="correct_progress" layoutX="405.0" layoutY="570.0" progress="0.9" style="&#10;            -fx-progress-color: #088a1d;&#10;         " />
+                <ProgressIndicator fx:id="wrong_progress" layoutX="919.0" layoutY="570.0" progress="0.1" style="&#10;            -fx-progress-color: #f70000;&#10;         " />
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

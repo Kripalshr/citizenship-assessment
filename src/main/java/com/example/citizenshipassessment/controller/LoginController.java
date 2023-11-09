@@ -34,6 +34,7 @@ public class LoginController {
 
     private Stage stage;
     private Scene scene;
+
     public LoginController() {
         dbConnector = new DatabaseConnector(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD);
     }
@@ -54,14 +55,14 @@ public class LoginController {
     private void loadMainPage(ActionEvent event, String username){
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("dashboard-page.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load());
             // Access the MainPageController instance from the FXMLLoader
-            MainPageController mainPageController = fxmlLoader.getController();
+            DashboardController dashboardController = fxmlLoader.getController();
 
             // Set the logged-in username in MainPageController
-            mainPageController.setLoggedInUsername(username);
+            dashboardController.setLoggedInUsername(username);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
