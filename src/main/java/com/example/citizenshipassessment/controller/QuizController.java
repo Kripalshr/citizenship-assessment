@@ -15,6 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -26,7 +29,7 @@ import java.util.List;
 public class QuizController {
 
     @FXML
-    public Label question;
+    public Label question, QuestionNo;
 
     @FXML
     public Button opt1, opt2, opt3, opt4, submit;
@@ -38,10 +41,14 @@ public class QuizController {
     private Stage stage;
     private Scene scene;
 
+
     private static List<Question> questions;
     private static int counter = 0;
     private static int correct = 0;
     private static int wrong = 0;
+    private int currentPosition = 0;
+
+
 
     private String loggedInUsername;
 
@@ -67,11 +74,50 @@ public class QuizController {
     private void loadQuestions() {
         if (counter < questions.size()) {
             Question currentQuestion = questions.get(counter);
+            QuestionNo.setText("Question " + (currentPosition + 1));
             question.setText(currentQuestion.getQuestionText());
             opt1.setText(currentQuestion.getOptions()[0]);
             opt2.setText(currentQuestion.getOptions()[1]);
             opt3.setText(currentQuestion.getOptions()[2]);
             opt4.setText(currentQuestion.getOptions()[3]);
+
+            // Check if a selected answer matches any option and set the color
+            String selectedAnswer = getSelectedAnswerForCurrentQuestion();
+            setOptionColor(opt1, selectedAnswer, currentQuestion.getOptions()[0]);
+            setOptionColor(opt2, selectedAnswer, currentQuestion.getOptions()[1]);
+            setOptionColor(opt3, selectedAnswer, currentQuestion.getOptions()[2]);
+            setOptionColor(opt4, selectedAnswer, currentQuestion.getOptions()[3]);
+        }
+    }
+    private String getSelectedAnswerForCurrentQuestion() {
+        return (counter < selectedAnswers.size()) ? selectedAnswers.get(counter)[1] : "";
+    }
+
+    private void setOptionColor(Button option, String selectedAnswer, String optionText) {
+        if (!selectedAnswer.isEmpty() && selectedAnswer.equals(optionText)) {
+            option.setTextFill(Color.GREEN);
+            option.setFont(Font.font(null, FontWeight.BOLD, 18));
+        } else {
+            option.setTextFill(Color.WHITE);
+            option.setFont(Font.font(null, FontWeight.BOLD, 18));
+        }
+    }
+
+    @FXML
+    public void previous(ActionEvent event) {
+        if (currentPosition > 0) {
+            currentPosition--;
+            counter--;
+            loadQuestions();
+        }
+    }
+
+    @FXML
+    public void next(ActionEvent event) {
+        if (currentPosition < questions.size() - 1) {
+            currentPosition++;
+            counter++;
+            loadQuestions();
         }
     }
 
@@ -84,6 +130,7 @@ public class QuizController {
     @FXML
     public void optionClicked(ActionEvent event) {
         String selectedOption = ((Button) event.getSource()).getText();
+
         if (counter < questions.size()) {
             Question currentQuestion = questions.get(counter);
             if (currentQuestion.isCorrectAnswer(selectedOption)) {
@@ -100,6 +147,7 @@ public class QuizController {
                     currentQuestion.getCorrectAnswer()
             };
             selectedAnswers.add(answerData);
+            currentPosition++;
             loadQuestions();
         } else {
             submit.setDisable(false);
