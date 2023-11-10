@@ -6,36 +6,40 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenshipassessment.controller.QuizController">
    <children>
-      <AnchorPane prefHeight="837.0" prefWidth="1437.0" style="-fx-background-color: #d4e0fe; -fx-background-radius: 32px; -fx-border-radius: 32px;">
+      <AnchorPane prefHeight="772.0" prefWidth="1395.0" style="-fx-background-color: #d4e0fe; -fx-background-radius: 32px; -fx-border-radius: 32px;">
          <children>
-            <Label fx:id="question" layoutX="483.0" layoutY="330.0" prefHeight="89.0" prefWidth="400.0" text="1. How many consonants are there in the English Alphabets?" wrapText="true">
+            <Label fx:id="question" layoutX="475.0" layoutY="165.0" prefHeight="89.0" prefWidth="494.0" text="1. How many consonants are there in the English Alphabets?" wrapText="true">
                <font>
                   <Font name="Open Sans Semibold" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="opt1" layoutX="483.0" layoutY="443.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 1" textFill="WHITE">
+            <Button fx:id="opt1" layoutX="490.0" layoutY="291.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 1" textFill="WHITE">
                <font>
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="opt3" layoutX="483.0" layoutY="516.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 3" textFill="WHITE">
+            <Button fx:id="opt3" layoutX="495.0" layoutY="382.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 3" textFill="WHITE">
                <font>
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="opt4" layoutX="749.0" layoutY="516.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 4" textFill="WHITE">
+            <Button fx:id="opt4" layoutX="759.0" layoutY="380.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 4" textFill="WHITE">
                <font>
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="opt2" layoutX="749.0" layoutY="443.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 2" textFill="WHITE">
+            <Button fx:id="opt2" layoutX="762.0" layoutY="291.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 2" textFill="WHITE">
                <font>
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
             </Button>
+            <Label fx:id="timer" layoutX="1169.0" layoutY="34.0" text="Timer">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

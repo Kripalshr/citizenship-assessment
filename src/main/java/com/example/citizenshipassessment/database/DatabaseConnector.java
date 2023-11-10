@@ -1,5 +1,4 @@
 package com.example.citizenshipassessment.database;
-import com.example.citizenshipassessment.model.CitizenshipData;
 import com.example.citizenshipassessment.model.User;
 
 import java.sql.Connection;

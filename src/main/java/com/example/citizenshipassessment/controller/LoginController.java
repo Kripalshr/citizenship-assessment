@@ -46,13 +46,13 @@ public class LoginController {
         User user = dbConnector.getUserByUsername(username);
 
         if (user != null && (Objects.equals(password, user.getPassword()))) {
-            loadMainPage(event, username);
+            loadDashboard(event, username);
         } else {
             loginVerify.setText("Login Failed");
         }
     }
 
-    private void loadMainPage(ActionEvent event, String username){
+    private void loadDashboard(ActionEvent event, String username){
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("dashboard-page.fxml"));

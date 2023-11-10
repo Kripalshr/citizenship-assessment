@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+
 public class QuizController {
 
     @FXML
@@ -25,6 +29,11 @@ public class QuizController {
 
     @FXML
     public Button opt1, opt2, opt3, opt4;
+
+    @FXML
+    public Label timer;
+    private Timeline quizTimer;
+    private int timeSeconds = 300;
     private Stage stage;
     private Scene scene;
 
@@ -39,6 +48,7 @@ public class QuizController {
     private void initialize() {
         loadQuestionsFromCSV();
         loadQuestions();
+        startTimer();
     }
 
     private void loadQuestionsFromCSV() {
@@ -97,6 +107,30 @@ public class QuizController {
         // Save selected answers to a CSV file in resources
         CSVFileWriter.writeCSVFile("src/main/resources/selected_answers.csv", selectedAnswers);
     }
+
+    private void startTimer() {
+        quizTimer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            timeSeconds--;
+            updateTimerLabel();
+            if (timeSeconds <= 0) {
+                quizTimer.stop();
+                openResultWindow(null);
+            }
+        }));
+        quizTimer.setCycleCount(Timeline.INDEFINITE);
+        quizTimer.play();
+    }
+
+    private void stopTimer() {
+        quizTimer.stop();
+    }
+
+    private void updateTimerLabel() {
+        int minutes = timeSeconds / 60;
+        int seconds = timeSeconds % 60;
+        timer.setText(String.format("%02d:%02d", minutes, seconds));
+    }
+
 
     public static int getTotalQuestionsCount() {
         return questions.size();

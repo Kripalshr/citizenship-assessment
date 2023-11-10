@@ -13,7 +13,7 @@
             <children>
                 <AnchorPane prefHeight="85.0" prefWidth="1368.0" style="-fx-background-color: #FFFFFF;">
                     <children>
-                        <Label fx:id="username" layoutX="1180.0" layoutY="32.0" text="serenashakya">
+                        <Label fx:id="userName" layoutX="1180.0" layoutY="32.0" text="serenashakya">
                             <font>
                                 <Font size="20.0" />
                             </font>
@@ -38,6 +38,7 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
+                  <Button fx:id="logout" layoutX="15.0" layoutY="689.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="47.0" prefWidth="271.0" text="Logout" />
                     </children>
                 </AnchorPane>
             <Label fx:id="welcomeLabel" layoutX="468.0" layoutY="130.0" text="Welcome to Automated Citizenshiop Assesment of new country">
