@@ -20,7 +20,7 @@
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="opt3" layoutX="495.0" layoutY="382.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 3" textFill="WHITE">
+            <Button fx:id="opt3" layoutX="492.0" layoutY="382.0" mnemonicParsing="false" onAction="#optionClicked" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Option 3" textFill="WHITE">
                <font>
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
@@ -35,11 +35,16 @@
                   <Font name="Open Sans Semibold" size="17.0" />
                </font>
             </Button>
-            <Label fx:id="timer" layoutX="1169.0" layoutY="34.0" text="Timer">
+            <Label fx:id="timer" layoutX="1169.0" layoutY="34.0" text="05:00">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
+            <Button fx:id="submit" layoutX="1016.0" layoutY="636.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Finish" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans Semibold" size="17.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

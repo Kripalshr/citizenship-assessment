@@ -60,6 +60,13 @@ public class DashboardController {
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("quiz.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(fxmlLoader.load());
+
+                // Get the controller from the FXMLLoader
+                QuizController quizController = fxmlLoader.getController();
+
+                // Pass the logged-in username to QuizController
+                quizController.setLoggedInUsername(loggedInUsername);
+
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
