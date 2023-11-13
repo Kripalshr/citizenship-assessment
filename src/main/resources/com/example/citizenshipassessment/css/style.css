@@ -13,3 +13,15 @@
 .login-button{
     -fx-background-color: #6c32ad;
 }
+
+/* Add or modify this style for menu buttons */
+.menu-button {
+    -fx-background-color: transparent;
+}
+
+.menu-button:selected {
+    -fx-background-color: #4a58ec;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.citizenshipassessment.controller.ReportController"
+            prefHeight="769.0" prefWidth="1368.0">
+
+    <VBox spacing="10" alignment="CENTER">
+        <Label text="Report" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+        <HBox spacing="10">
+            <Label text="Maximum:"/>
+            <Label fx:id="maxLabel"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Minimum:"/>
+            <Label fx:id="minLabel"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Mean:"/>
+            <Label fx:id="meanLabel"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Mode:"/>
+            <Label fx:id="modeLabel"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Median:"/>
+            <Label fx:id="medianLabel"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Standard Deviation:"/>
+            <Label fx:id="stdDevLabel"/>
+        </HBox>
+    </VBox>
+
+</AnchorPane>

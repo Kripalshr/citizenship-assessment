@@ -53,16 +53,17 @@ public class LoginController {
     }
 
     private void loadDashboard(ActionEvent event, String username){
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("dashboard-page.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load());
-            // Access the MainPageController instance from the FXMLLoader
+
+            // Access the QuizController instance from the FXMLLoader
             DashboardController dashboardController = fxmlLoader.getController();
 
-            // Set the logged-in username in MainPageController
+            // Set the logged-in username in QuizController
             dashboardController.setLoggedInUsername(username);
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

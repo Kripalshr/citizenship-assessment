@@ -19,10 +19,12 @@ public class DashboardController {
 
     @FXML
     private Label userName;
+
     private Stage stage;
     private Scene scene;
 
     private String loggedInUsername;
+
     @FXML
     private Button logout;
 
@@ -50,40 +52,51 @@ public class DashboardController {
         return loggedInUsername;
     }
 
+    @FXML
     public void handleStartAssessmentButton(ActionEvent event) {
-        // Fetch user information from the database
         Date dob = fetchUserDOB(loggedInUsername);
 
-        // Check if the user is above 18
-        if (isUserAbove18(dob)) {
+        if (dob != null && isUserAbove18(dob)) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("quiz.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(fxmlLoader.load());
-
-                // Get the controller from the FXMLLoader
-                QuizController quizController = fxmlLoader.getController();
-
-                // Pass the logged-in username to QuizController
-                quizController.setLoggedInUsername(loggedInUsername);
-
-                stage.setScene(scene);
-                stage.show();
+                loadFXML("quiz.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            // Show an alert indicating the user needs to be 18 or older
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Age Verification");
-            alert.setHeaderText(null);
-            alert.setContentText("You must be 18 years or older to take this assessment.");
-            alert.showAndWait();
+            showAlert("Age Verification", "You must be 18 years or older to take this assessment.");
         }
     }
 
+    @FXML
+    public void handleResultsButton(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("report.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadFXML(String fxmlFile) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFile));
+        stage = (Stage) userName.getScene().getWindow();
+        scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
     private Date fetchUserDOB(String username) {
-        // Modify these variables with your database connection details
         String url = AppConfig.DB_URL;
         String dbUsername = AppConfig.DB_USERNAME;
         String dbPassword = AppConfig.DB_PASSWORD;
@@ -112,19 +125,8 @@ public class DashboardController {
 
     @FXML
     public void handleLogoutButton(ActionEvent event) {
-        // Handle the logout button action, e.g., log the user out
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("login-view.fxml"));
-            Stage loginStage = new Stage();
-            Scene loginScene = new Scene(fxmlLoader.load());
-            loginStage.setScene(loginScene);
-
-            // Close the current dashboard stage
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-
-            // Show the login stage
-            loginStage.show();
+            loadFXML("login-view.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

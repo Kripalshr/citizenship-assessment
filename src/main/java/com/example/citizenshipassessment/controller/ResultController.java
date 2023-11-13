@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 public class ResultController implements Initializable {
 
     @FXML
-    public Label remark, marks, markstext, correcttext, wrongtext;
+    public Label remark, marks, markstext, correcttext, wrongtext, percentageLabel;
 
     @FXML
     public ProgressIndicator correct_progress, wrong_progress;
@@ -20,18 +20,24 @@ public class ResultController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         int correct = QuizController.getCorrectAnswersCount();
         int wrong = QuizController.getWrongAnswersCount();
+        int totalQuestions = QuizController.getTotalQuestionsCount();
 
-        correcttext.setText("Correct Answers : " + correct);
-        wrongtext.setText("Incorrect Answers : " + wrong);
+        correcttext.setText("Correct Answers: " + correct);
+        wrongtext.setText("Incorrect Answers: " + wrong);
 
-        marks.setText(correct + "/" + QuizController.getTotalQuestionsCount());
-        float correctPercentage = (float) correct / QuizController.getTotalQuestionsCount();
-        correct_progress.setProgress(correctPercentage);
+        marks.setText(correct + "/" + totalQuestions);
 
-        float wrongPercentage = (float) wrong / QuizController.getTotalQuestionsCount();
-        wrong_progress.setProgress(wrongPercentage);
+        float correctPercentage = ((float) correct / totalQuestions) * 100;
+        correct_progress.setProgress(correctPercentage / 100);
+
+        float wrongPercentage = ((float) wrong / totalQuestions) * 100;
+        wrong_progress.setProgress(wrongPercentage / 100);
 
         markstext.setText(correct + " Marks Scored");
+
+        // Calculate and display the percentage dynamically
+        float totalPercentage = ((float) correct / totalQuestions) * 100;
+        percentageLabel.setText("Percentage Scored: " + String.format("%.2f", totalPercentage) + "%");
 
         if (correct < 2) {
             remark.setText("Oh no..! You have failed the quiz. It seems that you need to improve your general knowledge. Practice daily! Check your results here.");

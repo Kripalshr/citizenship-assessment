@@ -67,7 +67,7 @@ public class QuizController {
         submit.setDisable(true); // Disable the submit button initially
     }
     private void loadQuestionsFromCSV() {
-        questions = QuizLoader.loadQuestionsFromCSV("");
+        questions = QuizLoader.loadQuestionsFromCSV("C:\\Users\\aayus\\IdeaProjects\\questions.csv");
     }
 
 
@@ -188,23 +188,39 @@ public class QuizController {
         String dbPassword = AppConfig.DB_PASSWORD;
 
         try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword)) {
-            String sql = "INSERT INTO answers (username, answer_no_1, answer_no_2, answer_no_3, answer_no_4, answer_no_5, answer_no_6, answer_no_7, answer_no_8, answer_no_9, answer_no_10, answer_no_11, answer_no_12, answer_no_13, answer_no_14, answer_no_15, answer_no_16, answer_no_17, answer_no_18, answer_no_19, answer_no_20) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO answers (username, answer_no_1, answer_no_2, answer_no_3, answer_no_4, answer_no_5, answer_no_6, answer_no_7, answer_no_8, answer_no_9, answer_no_10, answer_no_11, answer_no_12, answer_no_13, answer_no_14, answer_no_15, answer_no_16, answer_no_17, answer_no_18, answer_no_19, answer_no_20) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" +
+                    " ON DUPLICATE KEY UPDATE " +
+                    "answer_no_1 = VALUES(answer_no_1), " +
+                    "answer_no_2 = VALUES(answer_no_2), " +
+                    "answer_no_3 = VALUES(answer_no_3), " +
+                    "answer_no_4 = VALUES(answer_no_4), " +
+                    "answer_no_5 = VALUES(answer_no_5), " +
+                    "answer_no_6 = VALUES(answer_no_6), " +
+                    "answer_no_7 = VALUES(answer_no_7), " +
+                    "answer_no_8 = VALUES(answer_no_8), " +
+                    "answer_no_9 = VALUES(answer_no_9), " +
+                    "answer_no_10 = VALUES(answer_no_10), " +
+                    "answer_no_11 = VALUES(answer_no_11), " +
+                    "answer_no_12 = VALUES(answer_no_12), " +
+                    "answer_no_13 = VALUES(answer_no_13), " +
+                    "answer_no_14 = VALUES(answer_no_14), " +
+                    "answer_no_15 = VALUES(answer_no_15), " +
+                    "answer_no_16 = VALUES(answer_no_16), " +
+                    "answer_no_17 = VALUES(answer_no_17), " +
+                    "answer_no_18 = VALUES(answer_no_18), " +
+                    "answer_no_19 = VALUES(answer_no_19), " +
+                    "answer_no_20 = VALUES(answer_no_20)";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, loggedInUsername);
 
             // Set values for each answer (modify as needed)
             for (int i = 0; i < 20; i++) {
-                String answerValue = (i < selectedAnswers.size()) ? selectedAnswers.get(i)[1] : ""; // Assuming the answer is stored in the second position of the answerData array
+                String answerValue = (i < selectedAnswers.size()) ? selectedAnswers.get(i)[1] : "";
                 statement.setString(i + 2, answerValue);
             }
 
             statement.executeUpdate();
-        } catch (SQLIntegrityConstraintViolationException e) {
-            // Handle the specific exception for duplicate entries
-            String errorMessage = "Duplicate entry detected. Please provide a unique username.";
-            showAlert("Duplicate Entry", errorMessage, Alert.AlertType.WARNING);
-
-            // You can log the exception details or take other appropriate actions
         } catch (SQLException e) {
             // Handle other SQL exceptions
             String errorMessage = "An error occurred while processing your request.";
