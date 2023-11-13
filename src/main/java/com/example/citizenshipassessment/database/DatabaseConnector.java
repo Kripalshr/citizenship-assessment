@@ -72,4 +72,25 @@ public class DatabaseConnector {
             e.printStackTrace();
         }
     }
+
+    public User getUserByEmail(String email) {
+        try {
+            String sql = "SELECT * FROM users WHERE email = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to retrieve user data.");
+        }
+
+        return null; // User not found
+    }
 }

@@ -32,13 +32,10 @@ public class RegisterController {
     private ToggleGroup GenderGroup;
     @FXML
     private RadioButton maleRadioButton;
-
     @FXML
     private RadioButton femaleRadioButton;
-
     @FXML
     private RadioButton otherRadioButton;
-
     @FXML
     private TextField citizenshipTextField;
     @FXML
@@ -64,33 +61,66 @@ public class RegisterController {
     }
 
     public void onRegisterButtonClick(ActionEvent event) throws IOException {
-        RadioButton selectedRadioButton = (RadioButton) GenderGroup.getSelectedToggle();
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String email = emailField.getText();
-        String f_name = first_name.getText();
-        String l_name = last_name.getText();
-        String nationality = nationalityPicker.getValue();
-        String citizenshipNumber = citizenshipTextField.getText();
-
-        // You can add additional validation here
-
-        // Hash the password before storing it in the database
-
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setFirstName(f_name);
-        user.setLastName(l_name);
-        user.setDob(Date.valueOf(dobDatePicker.getValue()));
-        if (selectedRadioButton != null) {
-            user.setGender(selectedRadioButton.getText());
+        // Check if the username already exists
+        if (isUsernameTaken(usernameField.getText())) {
+            // Handle the case where the username is already taken
+            showAlert("Error", "Username already exists. Please choose a different username.");
+            return; // Stop the registration process
         }
-        user.setNationality(nationality);
-        user.setCitizenshipNumber(citizenshipNumber);
+        if (isEmailTaken(emailField.getText())) {
+            showAlert("Error", "Email is already taken. Please choose a different email.");
+            return;
+        }
+
+        // Continue with user registration
+        User user = new User();
+        user.setUsername(usernameField.getText());
+        user.setPassword(passwordField.getText());
+        user.setEmail(emailField.getText());
+        user.setFirstName(first_name.getText());
+        user.setLastName(last_name.getText());
+        user.setDob(Date.valueOf(dobDatePicker.getValue()));
+        user.setGender(getSelectedGender());
+        user.setCountry(nationalityPicker.getValue());
+        user.setCitizenshipNumber(citizenshipTextField.getText());
+
+        // Insert user into the database
         dbConnector.insertUser(user);
+
+        // Switch to the login page
         switchToLoginPage(event);
+    }
+
+    private boolean isUsernameTaken(String username) {
+        try {
+            User existingUser = dbConnector.getUserByUsername(username);
+            return existingUser != null;
+        } catch (RuntimeException e) {
+            e.printStackTrace(); // Handle exceptions appropriately in your application
+            return true; // Assume an error occurred, and prevent registration
+        }
+    }
+    private boolean isEmailTaken(String email) {
+        try {
+            User existingUser = dbConnector.getUserByEmail(email);
+            return existingUser != null;
+        } catch (RuntimeException e) {
+            e.printStackTrace(); // Handle exceptions appropriately in your application
+            return true; // Assume an error occurred, and prevent registration
+        }
+    }
+
+    private String getSelectedGender() {
+        RadioButton selectedRadioButton = (RadioButton) GenderGroup.getSelectedToggle();
+        return selectedRadioButton != null ? selectedRadioButton.getText() : null;
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public void switchToLoginPage(ActionEvent event) throws IOException {
