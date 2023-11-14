@@ -50,7 +50,7 @@ public class RegisterController {
     @FXML
     private void initialize() {
         // Create a list of nationality choices
-        ObservableList<String> nationalityChoices = FXCollections.observableArrayList("United States", "United Kingdom", "Canada", "Australia", "India", "Other");
+        ObservableList<String> nationalityChoices = FXCollections.observableArrayList("Malaysia", "Singapore", "Thailand");
 
         // Add choices to the ChoiceBox
         nationalityPicker.setItems(nationalityChoices);

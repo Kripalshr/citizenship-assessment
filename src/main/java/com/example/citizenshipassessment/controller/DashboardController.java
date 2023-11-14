@@ -129,4 +129,24 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void handleCheckReport(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("report.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(fxmlLoader.load());
+
+            // Get the controller from the FXMLLoader
+            ReportController reportController = fxmlLoader.getController();
+
+            // Pass the logged-in username to ReportController
+            reportController.setLoggedInUsername(loggedInUsername);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

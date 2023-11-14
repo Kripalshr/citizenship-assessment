@@ -39,6 +39,11 @@
                             </font>
                         </Label>
                   <Button fx:id="logout" layoutX="15.0" layoutY="689.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="47.0" prefWidth="271.0" text="Logout" />
+                  <Label layoutX="59.0" layoutY="136.0" text="Report" textFill="#a9b0bf">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                     </children>
                 </AnchorPane>
             <Label fx:id="welcomeLabel" layoutX="468.0" layoutY="130.0" text="Welcome to Automated Citizenshiop Assesment of new country">
@@ -61,6 +66,7 @@
                </font>
             </Label>
             <Button layoutX="471.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleStartAssessmentButton" text="Start Assessment" />
+            <Button layoutX="1238.0" layoutY="715.0" mnemonicParsing="false" onAction="#handleCheckReport" text="Check Report" />
             </children>
         </AnchorPane>
     </children>
