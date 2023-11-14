@@ -92,18 +92,29 @@ public class ReportController {
 
             results.setVisible(true);
             resultMessage.setVisible(true);
-            int userScore = Integer.parseInt(userData[3]);
-            if (userScore < 10) {
-                // Display sorry message
-                resultMessage.setText("Sorry");
-                passFailIndicator.setFill(Color.RED);
-                passFailText.setText("Fail");
-                passFailText.setTextFill(Color.WHITE);
+//            int userScore = Integer.parseInt(userData[3]);
+//            System.out.println(userScore);
+            if (userData[3] != null && !userData[3].isEmpty()) {
+                int userScore = Integer.parseInt(userData[3]);
+
+                if (userScore < 10) {
+                    // Display sorry message
+                    resultMessage.setText("Sorry");
+                    passFailIndicator.setFill(Color.RED);
+                    passFailText.setText("Fail");
+                    passFailText.setTextFill(Color.WHITE);
+                } else {
+                    // Display congratulation message
+                    resultMessage.setText("Congratulations");
+                    passFailIndicator.setFill(Color.GREEN);
+                    passFailText.setText("Pass");
+                    passFailText.setTextFill(Color.WHITE);
+                }
             } else {
-                // Display congratulation message
-                resultMessage.setText("Congratulations");
-                passFailIndicator.setFill(Color.GREEN);
-                passFailText.setText("Pass");
+                // Handle the case where the user has no score (null or empty)
+                resultMessage.setText("No score available");
+                passFailIndicator.setFill(Color.GRAY);
+                passFailText.setText("NO Score Available");
                 passFailText.setTextFill(Color.WHITE);
             }
         });

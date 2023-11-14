@@ -1,10 +1,17 @@
 package com.example.citizenshipassessment.controller;
 
+import com.example.citizenshipassessment.MainApp;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,4 +52,24 @@ public class ResultController implements Initializable {
             remark.setText("Congratulations! You have passed the quiz with full marks because of your hard work and dedication towards studies. Keep it up! Check your results here.");
         }
     }
+    @FXML
+    public void handleLogoutButton(ActionEvent event) {
+        // Handle the logout button action, e.g., log the user out
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("login-view.fxml"));
+            Stage loginStage = new Stage();
+            Scene loginScene = new Scene(fxmlLoader.load());
+            loginStage.setScene(loginScene);
+
+            // Close the current dashboard stage
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            // Show the login stage
+            loginStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
