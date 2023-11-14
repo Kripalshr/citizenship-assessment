@@ -3,50 +3,64 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.Text?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenshipassessment.controller.ResultController">
     <children>
-        <AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white; -fx-background-radius: 32px; -fx-border-radius: 32px;">
+        <AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #d1d1d1; -fx-background-radius: 32px; -fx-border-radius: 32px;">
             <children>
-                <Label layoutX="623.0" layoutY="94.0" text="Result">
+                <Text layoutX="623.0" layoutY="50.0" text="Result">
                     <font>
-                        <Font name="Open Sans Extrabold" size="27.0" />
+                        <Font name="Montserrat" size="48.0" />
+                    </font>
+                    <underline>true</underline>
+                </Text>
+                <Label fx:id="remark" layoutX="50.0" layoutY="150.0" prefHeight="200.0" prefWidth="1200.0" text="Congratulations! You've mastered the quiz with flying colors. Your dedication and hard work truly paid off. Keep up the excellent work!" textFill="#333333" wrapText="true">
+                    <font>
+                        <Font name="Roboto" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="remark" layoutX="412.0" layoutY="153.0" prefHeight="70.0" prefWidth="623.0" text="Very good work!! This is your hard work and dedication which helped you to reach the zenith of success." wrapText="true">
+
+                <Rectangle fill="#333333" height="2.0" layoutX="83.0" layoutY="314.0" width="1200.0" />
+
+                <Label fx:id="marks" layoutX="50.0" layoutY="349.0" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="9/10" textFill="#ffffff">
                     <font>
-                        <Font name="Open Sans Semibold" size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="marks" layoutX="412.0" layoutY="255.0" prefHeight="130.0" prefWidth="138.0" style="-fx-background-color: grey; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="9/10" textFill="#320f48">
-                    <font>
-                        <Font name="Open Sans Extrabold" size="30.0" />
+                        <Font name="Montserrat" size="42.0" />
                     </font>
                     <padding>
-                        <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                     </padding>
+                    <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#3498db" radius="10.0" />
+                    </effect>
                 </Label>
-                <Label fx:id="markstext" layoutX="423.0" layoutY="407.0" text="9 Marks Scored" textFill="#1f3eff">
+
+                <Label fx:id="markstext" layoutX="57.0" layoutY="491.0" text="9 Marks Scored" textFill="#333333">
                     <font>
-                        <Font name="Open Sans Semibold" size="15.0" />
+                        <Font name="Roboto" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="correcttext" layoutX="486.0" layoutY="539.0" text="Correct Answers: 9" textFill="#0692aa">
+
+                <Label fx:id="correcttext" layoutX="55.0" layoutY="532.0" text="Correct Answers: 9" textFill="#333333">
                     <font>
-                        <Font name="Open Sans Semibold" size="15.0" />
+                        <Font name="Roboto" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="wrongtext" layoutX="1002.0" layoutY="536.0" text="Incorrect Answers: 1" textFill="#ff0000">
+
+                <ProgressIndicator fx:id="correct_progress" layoutX="227.0" layoutY="528.0" prefHeight="70.0" prefWidth="70.0" progress="0.9" style="&#10;            -fx-progress-color: linear-gradient(to right, #088a1d, #05c945);&#10;         " />
+
+                <Label fx:id="wrongtext" layoutX="52.0" layoutY="590.0" prefHeight="27.0" prefWidth="169.0" text="Incorrect Answers: 1" textFill="#333333">
                     <font>
-                        <Font name="Open Sans Semibold" size="15.0" />
+                        <Font name="Roboto" size="18.0" />
                     </font>
                 </Label>
-                <ProgressIndicator fx:id="correct_progress" layoutX="405.0" layoutY="570.0" progress="0.9" style="&#10;            -fx-progress-color: #088a1d;&#10;         " />
-                <ProgressIndicator fx:id="wrong_progress" layoutX="919.0" layoutY="570.0" progress="0.1" style="&#10;            -fx-progress-color: #f70000;&#10;         " />
+
+                <ProgressIndicator fx:id="wrong_progress" layoutX="227.0" layoutY="591.0" prefHeight="41.0" prefWidth="665.0" progress="0.1" style="&#10;            -fx-progress-color: linear-gradient(to right, #f70000, #ff5757);&#10;         " />
             </children>
         </AnchorPane>
     </children>

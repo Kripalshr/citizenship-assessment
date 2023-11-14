@@ -7,7 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,7 +42,27 @@ public class ReportController {
     @FXML
     private Label calculateMax;
 
+    @FXML
+    private ChoiceBox<String> candidates;
+
     private String loggedInUsername;
+
+    @FXML
+    private Label firstname;
+    @FXML
+    private Label lastname;
+    @FXML
+    private Label username;
+    @FXML
+    private Label score;
+    @FXML
+    private AnchorPane results;
+    @FXML
+    private Label resultMessage;
+    @FXML
+    private Rectangle passFailIndicator;
+    @FXML
+    private Label passFailText;
 
     public void setLoggedInUsername(String username) {
         loggedInUsername = username;
@@ -48,6 +72,128 @@ public class ReportController {
     // You can add methods to set values for these labels if needed
     public void initialize(){
         calculateAndSetStatistics();
+        populateCandidateChoiceBox();
+    }
+
+    private void populateCandidateChoiceBox() {
+        // Fetch names from the database and add them to the ChoiceBox
+        List<String> firstNames = fetchFirstNamesFromDatabase();
+        candidates.getItems().addAll(firstNames);
+
+        candidates.setOnAction(event -> {
+            String selectedFirstName = candidates.getValue();
+            String selectedUsername = fetchUsernameByFirstName(selectedFirstName);
+            String[] userData = fetchUserDetailsAndScore(selectedUsername);
+            firstname.setText(userData[0]);
+            lastname.setText(userData[1]);
+            username.setText(userData[2]);
+            score.setText(userData[3]);
+            // You can use selectedUsername as needed
+
+            results.setVisible(true);
+            resultMessage.setVisible(true);
+            int userScore = Integer.parseInt(userData[3]);
+            if (userScore < 10) {
+                // Display sorry message
+                resultMessage.setText("Sorry");
+                passFailIndicator.setFill(Color.RED);
+                passFailText.setText("Fail");
+                passFailText.setTextFill(Color.WHITE);
+            } else {
+                // Display congratulation message
+                resultMessage.setText("Congratulations");
+                passFailIndicator.setFill(Color.GREEN);
+                passFailText.setText("Pass");
+                passFailText.setTextFill(Color.WHITE);
+            }
+        });
+    }
+
+    private String[] fetchUserDetailsAndScore(String username) {
+        String url = AppConfig.DB_URL;
+        String dbUsername = AppConfig.DB_USERNAME;
+        String dbPassword = AppConfig.DB_PASSWORD;
+
+        String[] userDetailsAndScore = new String[5]; // Assuming you want to store firstname, lastname, username, score
+
+        try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword)) {
+            // Fetch user details from the users table
+            String userDetailsQuery = "SELECT f_name, l_name, username FROM users WHERE username = ?";
+            try (PreparedStatement userDetailsStatement = connection.prepareStatement(userDetailsQuery)) {
+                userDetailsStatement.setString(1, username);
+                try (ResultSet userDetailsResultSet = userDetailsStatement.executeQuery()) {
+                    if (userDetailsResultSet.next()) {
+                        userDetailsAndScore[0] = userDetailsResultSet.getString("f_name"); // firstname
+                        userDetailsAndScore[1] = userDetailsResultSet.getString("l_name"); // lastname
+                        userDetailsAndScore[2] = userDetailsResultSet.getString("username"); // username
+                    }
+                }
+            }
+
+            // Fetch score from the answers table
+            String scoreQuery = "SELECT marks_obtained FROM answers WHERE username = ?";
+            try (PreparedStatement scoreStatement = connection.prepareStatement(scoreQuery)) {
+                scoreStatement.setString(1, username);
+                try (ResultSet scoreResultSet = scoreStatement.executeQuery()) {
+                    if (scoreResultSet.next()) {
+                        userDetailsAndScore[3] = scoreResultSet.getString("marks_obtained"); // score
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exceptions appropriately in your application
+        }
+
+        return userDetailsAndScore;
+    }
+
+
+    private String fetchUsernameByFirstName(String firstName) {
+        String url = AppConfig.DB_URL;
+        String dbUsername = AppConfig.DB_USERNAME;
+        String dbPassword = AppConfig.DB_PASSWORD;
+        String selectedUsername = null;
+
+        try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword)) {
+            String query = "SELECT username FROM users WHERE f_name = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, firstName);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        selectedUsername = resultSet.getString("username");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exceptions appropriately in your application
+        }
+
+        return selectedUsername;
+    }
+
+
+
+    private List<String> fetchFirstNamesFromDatabase() {
+        String url = AppConfig.DB_URL;
+        String dbUsername = AppConfig.DB_USERNAME;
+        String dbPassword = AppConfig.DB_PASSWORD;
+        List<String> userNames = new ArrayList<>();
+        List<String> firstNames = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword)) {
+            String query = "SELECT username,f_name FROM users"; // Replace with your actual table name
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    userNames.add(resultSet.getString("username"));
+                    firstNames.add(resultSet.getString("f_name"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exceptions appropriately in your application
+        }
+        return firstNames;
     }
 
 
