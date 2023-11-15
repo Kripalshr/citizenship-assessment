@@ -188,7 +188,10 @@ public class QuizController {
         String dbPassword = AppConfig.DB_PASSWORD;
 
         try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword)) {
-            String sql = "INSERT INTO answers (username, answer_no_1, answer_no_2, answer_no_3, answer_no_4, answer_no_5, answer_no_6, answer_no_7, answer_no_8, answer_no_9, answer_no_10, answer_no_11, answer_no_12, answer_no_13, answer_no_14, answer_no_15, answer_no_16, answer_no_17, answer_no_18, answer_no_19, answer_no_20, marks_obtained) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO answers (username, answer_no_1, answer_no_2, answer_no_3, answer_no_4, answer_no_5, answer_no_6, " +
+                    "answer_no_7, answer_no_8, answer_no_9, answer_no_10, answer_no_11, answer_no_12, answer_no_13, answer_no_14, answer_no_15, " +
+                    "answer_no_16, answer_no_17, answer_no_18, answer_no_19, answer_no_20, marks_obtained) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, loggedInUsername);
 

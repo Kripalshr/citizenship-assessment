@@ -13,7 +13,7 @@ public class QuizLoader {
 
     public static List<Question> loadQuestionsFromCSV(String csvFilePath) {
         List<Question> questions = new ArrayList<>();
-        try (CSVReader csvReader = new CSVReaderBuilder(new FileReader("/Users/serenashakya/IdeaProjects/citizenship-assessment/src/main/resources/com/example/citizenshipassessment/questions.csv")).withSkipLines(1).build()) {
+        try (CSVReader csvReader = new CSVReaderBuilder(new FileReader("/Users/kripal/Project Files/java/citizenship-assessment/src/main/resources/com/example/citizenshipassessment/questions.csv")).withSkipLines(1).build()) {
             String[] line;
             while ((line = csvReader.readNext()) != null) {
                 if (line.length >= 6) {
