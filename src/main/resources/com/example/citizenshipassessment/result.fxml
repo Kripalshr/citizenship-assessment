@@ -15,23 +15,23 @@
     <children>
         <AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #d1d1d1; -fx-background-radius: 32px; -fx-border-radius: 32px;">
             <children>
-                <Text layoutX="623.0" layoutY="50.0" text="Result">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="568.0" layoutX="81.0" layoutY="93.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1201.0" />
+                <Text fill="#203149" layoutX="623.0" layoutY="164.0" strokeWidth="0.0" text="Result">
                     <font>
-                        <Font name="Montserrat" size="48.0" />
+                        <Font name="Arial Bold" size="48.0" />
                     </font>
-                    <underline>true</underline>
                 </Text>
-                <Label fx:id="remark" layoutX="50.0" layoutY="150.0" prefHeight="200.0" prefWidth="1200.0" text="Congratulations! You've mastered the quiz with flying colors. Your dedication and hard work truly paid off. Keep up the excellent work!" textFill="#333333" wrapText="true">
+                <Label fx:id="remark" alignment="CENTER" layoutX="136.0" layoutY="197.0" prefHeight="89.0" prefWidth="1120.0" style="-fx-background-color: #FFFFFF;" text="Congratulations! You've mastered the quiz with flying colors. Your dedication and hard work truly paid off. Keep up the excellent work!" textAlignment="CENTER" textFill="#333333" wrapText="true">
                     <font>
-                        <Font name="Roboto" size="18.0" />
+                        <Font name="Arial" size="20.0" />
                     </font>
                 </Label>
 
-                <Rectangle fill="#333333" height="2.0" layoutX="83.0" layoutY="314.0" width="1200.0" />
+                <Rectangle fill="#d3cfcf" height="2.0" layoutX="81.0" layoutY="314.0" width="1206.0" />
 
-                <Label fx:id="marks" layoutX="50.0" layoutY="349.0" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="9/10" textFill="#ffffff">
+                <Label fx:id="marks" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="339.0" prefHeight="90.0" prefWidth="148.0" style="-fx-background-color: #59B259; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="9/10" textAlignment="CENTER" textFill="#ffffff">
                     <font>
-                        <Font name="Montserrat" size="42.0" />
+                        <Font size="39.0" />
                     </font>
                     <padding>
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -41,30 +41,30 @@
                     </effect>
                 </Label>
 
-                <Label fx:id="markstext" layoutX="57.0" layoutY="491.0" text="9 Marks Scored" textFill="#333333">
+                <Label fx:id="markstext" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="458.0" text="9 Marks Scored" textFill="#333333">
                     <font>
-                        <Font name="Roboto" size="18.0" />
+                        <Font name="Arial" size="20.0" />
                     </font>
                 </Label>
 
-                <Label fx:id="correcttext" layoutX="55.0" layoutY="532.0" text="Correct Answers: 9" textFill="#333333">
+                <Label fx:id="correcttext" alignment="CENTER" contentDisplay="CENTER" layoutX="597.0" layoutY="500.0" text="Correct Answers: 9" textFill="#333333">
                     <font>
-                        <Font name="Roboto" size="18.0" />
+                        <Font name="Arial" size="20.0" />
                     </font>
                 </Label>
 
-                <ProgressIndicator fx:id="correct_progress" layoutX="227.0" layoutY="528.0" prefHeight="70.0" prefWidth="70.0" progress="0.9" style="&#10;            -fx-progress-color: linear-gradient(to right, #088a1d, #05c945);&#10;         " />
+                <ProgressIndicator fx:id="correct_progress" layoutX="783.0" layoutY="492.0" prefHeight="70.0" prefWidth="70.0" progress="0.9" style="&#10;            -fx-progress-color: linear-gradient(to right, #088a1d, #05c945);&#10;         " />
 
-                <Label fx:id="wrongtext" layoutX="52.0" layoutY="590.0" prefHeight="27.0" prefWidth="169.0" text="Incorrect Answers: 1" textFill="#333333">
+                <Label fx:id="wrongtext" alignment="CENTER" contentDisplay="CENTER" layoutX="579.0" layoutY="546.0" prefHeight="27.0" prefWidth="199.0" text="Incorrect Answers: 1" textAlignment="CENTER" textFill="#333333">
                     <font>
-                        <Font name="Roboto" size="18.0" />
+                        <Font name="Arial" size="20.0" />
                     </font>
                 </Label>
 
-                <ProgressIndicator fx:id="wrong_progress" layoutX="227.0" layoutY="591.0" prefHeight="41.0" prefWidth="665.0" progress="0.1" style="&#10;            -fx-progress-color: linear-gradient(to right, #f70000, #ff5757);&#10;         " />
-            <Button layoutX="1142.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="37.0" prefWidth="142.0" style="-fx-background-color: #3498db;" text="Logout" textFill="WHITE">
+                <ProgressIndicator fx:id="wrong_progress" layoutX="783.0" layoutY="543.0" prefHeight="41.0" prefWidth="665.0" progress="0.1" style="&#10;            -fx-progress-color: linear-gradient(to right, #f70000, #ff5757);&#10;         " />
+            <Button layoutX="1121.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="37.0" prefWidth="142.0" style="-fx-background-color: #F7665E;" text="Logout" textFill="WHITE">
                <font>
-                  <Font name="Arial Bold" size="13.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Button>
             </children>
