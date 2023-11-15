@@ -38,7 +38,10 @@
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                  <Button fx:id="logout" layoutX="15.0" layoutY="689.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="47.0" prefWidth="271.0" text="Logout" />
+                  <Button fx:id="logout" layoutX="15.0" layoutY="689.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="47.0" prefWidth="271.0" style="-fx-background-color: #F7665E;" text="Logout" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Button>
                   <Label layoutX="59.0" layoutY="136.0" text="Report" textFill="#a9b0bf">
                      <font>
                         <Font size="20.0" />
@@ -46,27 +49,45 @@
                   </Label>
                     </children>
                 </AnchorPane>
-            <Label fx:id="welcomeLabel" layoutX="468.0" layoutY="130.0" text="Welcome to Automated Citizenshiop Assesment of new country">
+            <Label fx:id="welcomeLabel" layoutX="317.0" layoutY="133.0" text="Welcome to Automated Citizenship Assesment of New Country">
                <font>
-                  <Font size="26.0" />
+                  <Font name="Arial Bold" size="26.0" />
                </font>
             </Label>
-            <Label layoutX="469.0" layoutY="190.0" prefHeight="83.0" prefWidth="673.0" text="An automated citizenship quiz comprises 20 questions to determine an individual's eligibility for citizenship. These questions span various aspects of the nation, from history and government to cultural values. The system calculates the score based on the responses, and if a certain threshold is met, the individual qualifies for citizenship. This quiz ensures that aspiring citizens have a strong understanding of their new homeland's essential elements, promoting unity and informed citizenship." wrapText="true" />
-            <Label layoutX="469.0" layoutY="283.0" prefHeight="43.0" prefWidth="197.0" text="Eligiblility Critera">
+            <Label layoutX="320.0" layoutY="176.0" prefHeight="162.0" prefWidth="1029.0" text="An automated citizenship quiz comprises 20 questions to determine an individual's eligibility for citizenship. These questions span various aspects of the nation, from history and government to cultural values. The system calculates the score based on the responses, and if a certain threshold is met, the individual qualifies for citizenship. This quiz ensures that aspiring citizens have a strong understanding of their new homeland's essential elements, promoting unity and informed citizenship." wrapText="true">
                <font>
-                  <Font name="Arial Black" size="19.0" />
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="318.0" layoutY="342.0" prefHeight="43.0" prefWidth="197.0" text="Eligiblility Critera">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="472.0" layoutY="327.0" prefHeight="17.0" prefWidth="531.0" text="1. The Applicant must be above 18 years old" />
-            <Label layoutX="472.0" layoutY="347.0" prefHeight="17.0" prefWidth="531.0" text="1. The Applicant must be above 18 years old" />
-            <Label layoutX="473.0" layoutY="365.0" prefHeight="17.0" prefWidth="531.0" text="1. The Applicant must be above 18 years old" />
-            <Label layoutX="470.0" layoutY="391.0" prefHeight="43.0" prefWidth="519.0" text="To Start your assessment Click on button below">
+            <Label layoutX="321.0" layoutY="386.0" prefHeight="26.0" prefWidth="379.0" text="1. The Applicant must be above 18 years old">
                <font>
-                  <Font name="Arial Black" size="19.0" />
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="321.0" layoutY="419.0" prefHeight="26.0" prefWidth="772.0" text="2. Must be citizen of any of these three countires: Thailand, Malaysia or Singapore">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="322.0" layoutY="455.0" prefHeight="26.0" prefWidth="799.0" text="3. The Applicant must not be convicted or sentenced for any criminal activities in past five years.">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="317.0" layoutY="514.0" prefHeight="43.0" prefWidth="408.0" text="Click the button below to start assesment">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="471.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleStartAssessmentButton" text="Start Assessment" />
-            <Button layoutX="1238.0" layoutY="715.0" mnemonicParsing="false" onAction="#handleCheckReport" text="Check Report" />
+            <Button layoutX="319.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleStartAssessmentButton" style="-fx-background-color: #3686FF;" text="Start Assessment" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button layoutX="1204.0" layoutY="708.0" mnemonicParsing="false" onAction="#handleCheckReport" style="-fx-background-color: #3686FF;" text="Check Report" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
             </children>
         </AnchorPane>
     </children>
