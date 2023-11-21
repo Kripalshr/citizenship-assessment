@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,17 +21,38 @@ public class DashboardController {
 
     @FXML
     private Label userName;
+
+    @FXML
+    private ImageView flagImage;
     private Stage stage;
     private Scene scene;
 
     private String loggedInUsername;
     @FXML
     private Button logout;
-
     public void setLoggedInUsername(String username) {
         loggedInUsername = username;
+        System.out.println(loggedInUsername);
         userName.setText(loggedInUsername);
     }
+
+    public void setFlag() {
+        String country = fetchUserNationality(loggedInUsername);
+        System.out.println(country);
+
+        if (country != null) {
+            // Assuming you have image resources named "flag_singapore.png", "flag_usa.png", etc.
+            String imagePath = "/com/example/citizenshipassessment/images/" + country.toLowerCase() + ".png";
+
+            // Load the image dynamically using resource path
+            Image image = new Image(getClass().getResourceAsStream(imagePath));
+
+            // Set the image to your ImageView (replace 'flagImage' with the actual name of your ImageView)
+            flagImage.setImage(image);
+        }
+    }
+
+
 
     private int calculateAge(Date birthDate) {
         if (birthDate != null) {
@@ -105,10 +128,29 @@ public class DashboardController {
         return null;
     }
 
-    @FXML
-    public void handleProfileButton(ActionEvent event) {
-        // Handle the profile button action, e.g., open the user's profile
+    private String fetchUserNationality(String username) {
+        // Modify these variables with your database connection details
+        String url = AppConfig.DB_URL;
+        String dbUsername = AppConfig.DB_USERNAME;
+        String dbPassword = AppConfig.DB_PASSWORD;
+
+        try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword)) {
+            String sql = "SELECT country FROM users WHERE username = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, username);
+                ResultSet resultSet = statement.executeQuery();
+
+
+                if (resultSet.next()) {
+                    return resultSet.getString("country");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+
 
     @FXML
     public void handleLogoutButton(ActionEvent event) {

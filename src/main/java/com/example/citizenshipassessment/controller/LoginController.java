@@ -63,6 +63,7 @@ public class LoginController {
 
             // Set the logged-in username in MainPageController
             dashboardController.setLoggedInUsername(username);
+            dashboardController.setFlag();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
